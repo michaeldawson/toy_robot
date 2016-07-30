@@ -74,6 +74,55 @@ RSpec.describe Robot do
     end
   end
 
+  describe '#left' do
+    it 'turns the robot from the NORTH to the WEST' do
+      robot.place(0, 0, 'NORTH')
+      expect {
+        robot.left
+      }.to change {
+        robot.direction
+      }.from('NORTH').to('WEST')
+    end
+
+    it 'turns the robot from the WEST to the SOUTH' do
+      robot.place(0, 0, 'WEST')
+      expect {
+        robot.left
+      }.to change {
+        robot.direction
+      }.from('WEST').to('SOUTH')
+    end
+
+    it 'turns the robot from the SOUTH to the EAST' do
+      robot.place(0, 0, 'SOUTH')
+      expect {
+        robot.left
+      }.to change {
+        robot.direction
+      }.from('SOUTH').to('EAST')
+    end
+
+    it 'turns the robot from the EAST to the NORTH' do
+      robot.place(0, 0, 'EAST')
+      expect {
+        robot.left
+      }.to change {
+        robot.direction
+      }.from('EAST').to('NORTH')
+    end
+  end
+
+  describe '#right' do
+    it 'turns the robot from the NORTH to the EAST' do
+      robot.place(0, 0, 'NORTH')
+      expect {
+        robot.right
+      }.to change {
+        robot.direction
+      }.from('NORTH').to('EAST')
+    end
+  end
+
   describe '#report' do
     context 'when the robot has been placed' do
       it 'prints out the position of the robot' do

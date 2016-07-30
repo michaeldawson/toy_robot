@@ -1,7 +1,9 @@
+require 'circular_list'
+
 class Robot
   VALID_X_COORDINATES = 0..4.freeze
   VALID_Y_COORDINATES = 0..4.freeze
-  VALID_DIRECTIONS = %w(NORTH SOUTH EAST WEST).freeze
+  VALID_DIRECTIONS = %w(NORTH EAST SOUTH WEST).freeze
 
   attr_accessor :x, :y, :direction
 
@@ -20,6 +22,14 @@ class Robot
   def move
     self.x += x_delta
     self.y += y_delta
+  end
+
+  def left
+    self.direction = directions.fetch_before(direction)
+  end
+
+  def right
+    self.direction = directions.fetch_after(direction)
   end
 
   def report
@@ -47,5 +57,9 @@ class Robot
     when 'SOUTH' then [0, -1]
     when 'WEST' then [-1, 0]
     end
+  end
+
+  def directions
+    @directions ||= CircularList::List.new(VALID_DIRECTIONS.dup)
   end
 end
