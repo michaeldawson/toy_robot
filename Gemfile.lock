@@ -4,6 +4,7 @@ GEM
     byebug (9.0.5)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
+    circular_list (0.0.4)
     diff-lcs (1.2.5)
     ffi (1.9.14)
     iniparse (1.4.2)
@@ -29,6 +30,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  circular_list
   overcommit
   rspec
 
