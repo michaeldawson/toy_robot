@@ -41,7 +41,7 @@ class Robot
   private
 
   def position_to_s(x, y, direction)
-    "X: #{x}, Y: #{y}, F: #{direction}"
+    [x, y, direction].join(',')
   end
 
   def x_delta

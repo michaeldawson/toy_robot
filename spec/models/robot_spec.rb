@@ -17,7 +17,7 @@ RSpec.describe Robot do
       it "raises an error" do
         expect {
           robot.place(1, 6, 'NORTH')
-        }.to raise_error('Invalid position: X: 1, Y: 6, F: NORTH')
+        }.to raise_error('Invalid position: 1,6,NORTH')
       end
     end
 
@@ -25,7 +25,7 @@ RSpec.describe Robot do
       it "raises an error" do
         expect {
           robot.place(1, 2, 'FOOBAR')
-        }.to raise_error('Invalid position: X: 1, Y: 2, F: FOOBAR')
+        }.to raise_error('Invalid position: 1,2,FOOBAR')
       end
     end
   end
@@ -142,7 +142,7 @@ RSpec.describe Robot do
 
         expect {
           robot.report
-        }.to output("X: 1, Y: 2, F: NORTH\n").to_stdout
+        }.to output("1,2,NORTH\n").to_stdout
       end
     end
   end
