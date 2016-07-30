@@ -20,7 +20,7 @@ RSpec.describe 'Robot knows how to handle itself on a table' do
     }
 
     COMMANDS.each do |command_set, report_expectation|
-      pending 'works' do
+      it 'works' do
         expect {
           CommandParser.perform(command_set)
         }.to output(report_expectation).to_stdout

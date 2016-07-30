@@ -1,4 +1,4 @@
-require 'robot'
+require_relative 'robot'
 
 class CommandParser
   COMMAND_REGEX = /(\S+)\s*(.*)/
