@@ -17,11 +17,35 @@ class Robot
     @direction = direction
   end
 
+  def move
+    self.x += x_delta
+    self.y += y_delta
+  end
+
   def report
     puts position_to_s(x, y, direction)
   end
 
+  private
+
   def position_to_s(x, y, direction)
     "X: #{x}, Y: #{y}, F: #{direction}"
+  end
+
+  def x_delta
+    delta[0]
+  end
+
+  def y_delta
+    delta[1]
+  end
+
+  def delta
+    case direction
+    when 'NORTH' then [0, 1]
+    when 'EAST' then [1, 0]
+    when 'SOUTH' then [0, -1]
+    when 'WEST' then [-1, 0]
+    end
   end
 end

@@ -30,6 +30,50 @@ RSpec.describe Robot do
     end
   end
 
+  describe '#move' do
+    context 'when the move is valid' do
+      it 'moves the robot appropriately when facing NORTH' do
+        robot.place(2, 2, 'NORTH')
+
+        expect {
+          robot.move
+        }.to change {
+          [robot.x, robot.y]
+        }.from([2, 2]).to([2, 3])
+      end
+
+      it 'moves the robot appropriately when facing SOUTH' do
+        robot.place(2, 2, 'SOUTH')
+
+        expect {
+          robot.move
+        }.to change {
+          [robot.x, robot.y]
+        }.from([2, 2]).to([2, 1])
+      end
+
+      it 'moves the robot appropriately when facing EAST' do
+        robot.place(2, 2, 'EAST')
+
+        expect {
+          robot.move
+        }.to change {
+          [robot.x, robot.y]
+        }.from([2, 2]).to([3, 2])
+      end
+
+      it 'moves the robot appropriately when facing WEST' do
+        robot.place(2, 2, 'WEST')
+
+        expect {
+          robot.move
+        }.to change {
+          [robot.x, robot.y]
+        }.from([2, 2]).to([1, 2])
+      end
+    end
+  end
+
   describe '#report' do
     context 'when the robot has been placed' do
       it 'prints out the position of the robot' do
