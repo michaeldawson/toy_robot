@@ -16,7 +16,14 @@ RSpec.describe 'Robot knows how to handle itself on a table' do
       MOVE
       LEFT
       MOVE
-      REPORT' => "X: 3, Y: 3, F: NORTH\n"
+      REPORT' => "X: 3, Y: 3, F: NORTH\n",
+
+      'PLACE 0,0,SOUTH
+      MOVE
+      MOVE
+      LEFT
+      LEFT
+      REPORT' => "X: 0, Y: 0, F: NORTH\n"
     }
 
     COMMANDS.each do |command_set, report_expectation|

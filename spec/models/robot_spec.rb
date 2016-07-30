@@ -72,6 +72,18 @@ RSpec.describe Robot do
         }.from([2, 2]).to([1, 2])
       end
     end
+
+    context 'when the move is not valid' do
+      it "doesn't move the robot" do
+        robot.place(0, 0, 'SOUTH')
+
+        expect {
+          robot.move
+        }.not_to change {
+          [robot.x, robot.y]
+        }
+      end
+    end
   end
 
   describe '#left' do

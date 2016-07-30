@@ -10,9 +10,9 @@ RSpec.describe CommandParser do
 
   context 'with valid commands separated by newlines' do
     let(:input) {
-'PLACE 0,0,NORTH
-MOVE
-REPORT'
+      'PLACE 0,0,NORTH
+      MOVE
+      REPORT'
     }
 
     it 'dispatches commands' do
@@ -25,7 +25,7 @@ REPORT'
 
   context 'with valid commands separated by newlines, with some extra spacing' do
     let(:input) {
-'PLACE 0, 0, NORTH'
+      'PLACE 0, 0, NORTH'
     }
 
     it 'dispatches commands' do
@@ -36,11 +36,10 @@ REPORT'
 
   context 'with invalid commands and valid commands' do
     let(:input) {
-'CHICKEN 0,0,NORTH
-DESTROY
-RM -RF /
-PLACE 0,0,NORTH
-'
+      'CHICKEN 0,0,NORTH
+      DESTROY
+      RM -RF /
+      PLACE 0,0,NORTH'
     }
 
     it "doesn't dispatch invalid commands, but dispatches the valid commands" do
@@ -49,6 +48,20 @@ PLACE 0,0,NORTH
       expect(robot).not_to receive(:rm)
       expect(robot).to receive(:place)
       command_parser.perform
+    end
+  end
+
+  context 'with invalid commands with whitespace' do
+    let(:input) {
+      '1234
+
+      '
+    }
+
+    it "doesn't raise an error" do
+      expect {
+        command_parser.perform
+      }.not_to raise_error
     end
   end
 end

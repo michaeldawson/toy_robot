@@ -20,8 +20,10 @@ class Robot
   end
 
   def move
-    self.x += x_delta
-    self.y += y_delta
+    new_x = x + x_delta
+    new_y = y + y_delta
+
+    self.x, self.y = new_x, new_y if self.class.valid_position?(new_x, new_y, direction)
   end
 
   def left

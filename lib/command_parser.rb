@@ -33,11 +33,11 @@ class CommandParser
   end
 
   def format_command(command)
-    command.downcase.to_sym
+    command.to_s.downcase.to_sym
   end
 
   def format_arguments(arguments)
-    arguments.split(',').map do |argument|
+    arguments.to_s.split(',').map do |argument|
       argument.strip!
       numeric?(argument) ? argument.to_i : argument
     end
